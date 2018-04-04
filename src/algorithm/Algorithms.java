@@ -1,5 +1,6 @@
 package algorithm;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Algorithms {
@@ -53,5 +54,49 @@ public class Algorithms {
 		// }
 		// }
 		// return words.get(i);
+	}
+
+	public static Object containsSOS(List<String> message1) {
+		// TODO Auto-generated method stub
+		if (message1.contains(" ... --- ... ")) {
+			return true;
+		}
+
+		return false;
+	}
+
+	public static List<Double> sortScores(List<Double> r) {
+		List<Double> results = new ArrayList<>(r);
+		// TODO Auto-generated method stub
+		List<Double> sorted = new ArrayList<>();
+		while (!results.isEmpty()) {
+			Double current = results.get(0);
+			for (int i = 0; i < results.size(); i++) {
+				if (current.compareTo(results.get(i)) > 0) {
+					current = results.get(i);
+				}
+
+			}
+			System.out.println(current);
+			sorted.add(current);
+			results.remove(current);
+		}
+		return sorted;
+
+	}
+
+	public static Object sortDNA(List<String> unsortedSequences) {
+		List<String> results = new ArrayList<>(unsortedSequences);
+		// TODO Auto-generated method stub
+		List<String> sorted = new ArrayList<>();
+		while (!results.isEmpty()) {
+			int current = results.get(0).length();
+			for (int i = 0; i < results.size(); i++) {
+				if (current < results.get(i).length()) {
+					current = results.get(i).length();
+				}
+			}
+		}
+		return null;
 	}
 }
