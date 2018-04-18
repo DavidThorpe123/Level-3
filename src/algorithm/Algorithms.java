@@ -85,18 +85,24 @@ public class Algorithms {
 
 	}
 
-	public static Object sortDNA(List<String> unsortedSequences) {
+	public static List<String> sortDNA(List<String> unsortedSequences) {
 		List<String> results = new ArrayList<>(unsortedSequences);
 		// TODO Auto-generated method stub
 		List<String> sorted = new ArrayList<>();
 		while (!results.isEmpty()) {
-			int current = results.get(0).length();
-			for (int i = 0; i < results.size(); i++) {
-				if (current < results.get(i).length()) {
-					current = results.get(i).length();
+			int shortestIndex = 0;
+			for (int i = 1; i < results.size(); i++) {
+				String currentShort = results.get(shortestIndex);
+				String current = results.get(i);
+				if (current.length() < currentShort.length()) {
+					shortestIndex = i;
 				}
+
 			}
+			String shortest = results.remove(shortestIndex);
+			sorted.add(shortest);
 		}
-		return null;
+
+		return sorted;
 	}
 }
